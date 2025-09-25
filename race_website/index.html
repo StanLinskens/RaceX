@@ -23,7 +23,7 @@
     <section id="home" class="tab active">
       <h2>Welcome to RaceX</h2>
       <p>
-        RaceX is a fun racing simulator where you choose your racers, set their speed rules, 
+        RaceX is a fun racing simulator where you choose your racers, set their speed rules,
         and watch them compete to the finish line.
       </p>
       <h3>How to Play</h3>
@@ -35,9 +35,22 @@
     </section>
 
     <!-- RACE TAB -->
+    <!-- RACE TAB -->
     <section id="race" class="tab">
       <h2>Race Arena</h2>
-      <div class="race-container">
+
+      <!-- Race Track -->
+      <div class="race-track">
+        <h3>Race Track</h3>
+        <div id="track">
+          <!-- Racers will move here -->
+        </div>
+      </div>
+
+      <!-- Bottom Panel: Racer Selection + Leaderboard -->
+      <div class="race-bottom-panel">
+
+        <!-- Racer Selection -->
         <div class="racer-selection">
           <h3>Select Racers</h3>
           <div id="racer-options">
@@ -46,19 +59,16 @@
           <button id="start-race">Start Race</button>
         </div>
 
-        <div class="race-track">
-          <h3>Race Track</h3>
-          <div id="track">
-            <!-- Racers will move here -->
+        <!-- Leaderboard / Results -->
+        <div class="results">
+          <h3>Results</h3>
+          <div id="race-results-container">
+            <ol id="race-results">
+              <!-- Race results appear here -->
+            </ol>
           </div>
         </div>
 
-        <div class="results">
-          <h3>Results</h3>
-          <ol id="race-results">
-            <!-- Race results appear here -->
-          </ol>
-        </div>
       </div>
     </section>
 

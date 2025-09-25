@@ -89,13 +89,8 @@ main {
 }
 
 /* ========= RACE ========= */
-.race-container {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  gap: 2rem;
-}
-
-.racer-selection, .results {
+.racer-selection {
+  flex: 1;
   background: var(--color-surface);
   padding: 1rem;
   border-radius: 12px;
@@ -103,12 +98,41 @@ main {
 }
 
 .race-track {
+  width: 100%;               /* full width */
+  height: 300px;             /* fixed height */
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+  margin-bottom: 1rem;       /* space below track */
+}
+
+.results {
+  flex: 1;
   background: var(--color-surface);
   padding: 1rem;
   border-radius: 12px;
   border: 1px solid var(--color-border);
-  overflow: hidden;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollable container for leaderboard */
+#race-results-container {
+  flex: 1;
+  overflow-y: auto;           /* scroll if too many results */
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;       /* add some margin */
+  border-top: 1px solid var(--color-border);
+}
+
+
+.race-bottom-panel {
+  display: flex;
+  gap: 2rem;
+  max-height: 400px;         /* fixed height to prevent stretching */
 }
 
 #track {
@@ -120,8 +144,8 @@ main {
 
 /* Placeholder racer style */
 .racer {
-  width: 40px;
-  height: 20px;
+  width: 60px;               /* make bigger */
+  height: 30px;
   border-radius: 4px;
   position: absolute;
   left: 0;
@@ -197,4 +221,67 @@ footer {
 .race-result-container li {
   margin-bottom: 0.3rem;
   color: var(--color-text); /* normal text color for racer names */
+}
+
+/* Stack race-bottom-panel vertically on small screens */
+@media (max-width: 900px) {
+  .race-bottom-panel {
+    flex-direction: column;
+    max-height: none; /* allow it to expand */
+  }
+
+  .racer-selection, .results {
+    width: 100%;
+  }
+
+  .race-track {
+    height: 250px; /* slightly smaller for smaller screens */
+    padding: 0.5rem;
+  }
+
+  .racer {
+    width: 50px;
+    height: 25px;
+  }
+}
+
+/* Very small screens (phones) */
+@media (max-width: 500px) {
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  nav button {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .race-track {
+    height: 200px;
+  }
+
+  .racer {
+    width: 40px;
+    height: 20px;
+  }
+
+  .results, .racer-selection {
+    padding: 0.5rem;
+  }
+}
+
+/* Home list spacing on small screens */
+@media (max-width: 600px) {
+  #home ul {
+    margin-left: 1rem;
+  }
+}
+
+/* Settings form adjusts width */
+@media (max-width: 500px) {
+  #settings form {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
 }
