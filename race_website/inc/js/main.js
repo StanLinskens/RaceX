@@ -101,15 +101,33 @@ function loadRacers() {
 // RACE LOGIC
 // =====================
 let raceInterval = null;
+let raceCount = 1; // Track which race number we are on
 const startRaceBtn = document.getElementById("start-race");
 
 startRaceBtn.addEventListener("click", () => {
-	resultsList.innerHTML = "";
-	loadRacers(); // reset racers before race
+	// Prevent multiple races at once
+	if (raceInterval) return;
 
-	const trackWidth = track.offsetWidth - 60; // finish line (minus racer width)
+	// Create a new race container for this race
+	const raceContainer = document.createElement("div");
+	raceContainer.classList.add("race-result-container");
+
+	// Heading for this race
+	const raceHeading = document.createElement("h3");
+	raceHeading.textContent = `Race ${raceCount}`;
+	raceContainer.appendChild(raceHeading);
+
+	// List to hold results for this race
+	const raceList = document.createElement("ol");
+	raceContainer.appendChild(raceList);
+
+	// Append the race container to the results div
+	resultsList.appendChild(raceContainer);
+
+	loadRacers(); // reset racers for the new race
+
+	const trackWidth = track.offsetWidth - 60;
 	let finished = [];
-	let placement = 1; // track finishing position
 
 	raceInterval = setInterval(() => {
 		racers.forEach(racer => {
@@ -129,13 +147,16 @@ startRaceBtn.addEventListener("click", () => {
 			if (racer.position >= trackWidth && !finished.includes(racer.name)) {
 				finished.push(racer.name);
 
+				// Add racer to the ordered list (numbered automatically)
 				const li = document.createElement("li");
-				li.textContent = `${racer.name}`; // use separate placement counter
-				placement++; // increment for next finisher
-				resultsList.appendChild(li);
+				li.textContent = racer.name;
+				raceList.appendChild(li);
 
+				// Stop race when all finish
 				if (finished.length === racers.length) {
 					clearInterval(raceInterval);
+					raceInterval = null;
+					raceCount++; // increment for next race
 				}
 			}
 		});

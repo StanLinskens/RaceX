@@ -175,3 +175,26 @@ footer {
   border-top: 1px solid var(--color-border);
   color: var(--color-text-muted);
 }
+
+/* Each race container */
+.race-result-container {
+  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Heading for each race */
+.race-result-container h3 {
+  color: var(--color-accent-2); /* neon blue */
+  margin-bottom: 0.5rem;
+}
+
+/* Ordered list for results */
+.race-result-container ol {
+  padding-left: 1.2rem; /* indent numbers */
+}
+
+.race-result-container li {
+  margin-bottom: 0.3rem;
+  color: var(--color-text); /* normal text color for racer names */
+}
