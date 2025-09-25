@@ -128,13 +128,6 @@ main {
   transition: left 0.2s linear;
 }
 
-.racer:nth-child(1) { background: var(--color-accent-1); top: 20px; }
-.racer:nth-child(2) { background: var(--color-accent-2); top: 70px; }
-.racer:nth-child(3) { background: var(--color-accent-3); top: 120px; }
-.racer:nth-child(4) { background: var(--color-success); top: 170px; }
-.racer:nth-child(5) { background: var(--color-warning); top: 220px; }
-.racer:nth-child(6) { background: var(--color-error); top: 270px; }
-
 /* ========= SETTINGS ========= */
 #settings form {
   display: grid;
