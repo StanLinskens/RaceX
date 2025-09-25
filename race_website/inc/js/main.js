@@ -8,10 +8,7 @@ tabs.forEach(button => {
   button.addEventListener("click", () => {
     const target = button.dataset.tab;
 
-    sections.forEach(section => {
-      section.classList.remove("active");
-    });
-
+    sections.forEach(section => section.classList.remove("active"));
     document.getElementById(target).classList.add("active");
   });
 });
@@ -39,42 +36,55 @@ settingsForm.addEventListener("submit", (e) => {
 });
 
 // =====================
-// RACER GENERATION
+// RACER REGISTRY
 // =====================
+// Add all your racer names here
+const allRacers = [
+  { name: "flash", img: "../../assets/image/racers/red-racer-pixilart.png" },
+  { name: "blaze", img: "../../assets/image/racers/blue-racer-pixilart.png" },
+  { name: "storm", img: "../../assets/image/racers/green-racer-pixilart.png" },
+  { name: "shadow", img: "../../assets/image/racers/yellow-racer-pixilart.png" },
+  { name: "viper", img: "../../assets/image/racers/pink-racer-pixilart.png" },
+  { name: "bolt", img: "../../assets/image/racers/orange-racer-pixilart.png" }
+];
+
 const racerOptions = document.getElementById("racer-options");
 const track = document.getElementById("track");
 const resultsList = document.getElementById("race-results");
 
-let racers = []; // store racer objects
+let racers = []; // active racers for the current game
 
 function loadRacers() {
   racerOptions.innerHTML = "";
   track.innerHTML = "";
   racers = [];
 
-  for (let i = 1; i <= gameSettings.racers; i++) {
-    // create racer choice (in selection panel)
+  // Limit to selected number of racers
+  const chosenRacers = allRacers.slice(0, gameSettings.racers);
+
+  chosenRacers.forEach((r, i) => {
+    // Create racer option in side panel
     const option = document.createElement("div");
-    option.textContent = `Racer ${i}`;
+    option.textContent = r.name;
     option.classList.add("racer-option");
     racerOptions.appendChild(option);
 
-    // create racer on track
+    // Create racer image on track
     const racerImg = document.createElement("img");
-    racerImg.src = `../../assets/image/racers/${i}-racer-pixilart.png`; // <-- your file path
+    racerImg.src = r.img;
     racerImg.classList.add("racer");
-    racerImg.style.top = `${50 * i}px`; // spacing
-    racerImg.style.left = `0px`;
+    racerImg.style.top = `${50 * i + 20}px`;
+    racerImg.style.left = "0px";
 
     track.appendChild(racerImg);
 
     racers.push({
-      id: i,
+      name: r.name,
       element: racerImg,
       position: 0,
       speed: 0
     });
-  }
+  });
 }
 
 // =====================
@@ -85,15 +95,14 @@ const startRaceBtn = document.getElementById("start-race");
 
 startRaceBtn.addEventListener("click", () => {
   resultsList.innerHTML = "";
-  loadRacers(); // refresh racers before race
+  loadRacers(); // reset racers before race
 
   const trackWidth = track.offsetWidth - 60; // finish line (minus racer width)
   let finished = [];
 
-  // update racer speeds periodically
   raceInterval = setInterval(() => {
     racers.forEach(racer => {
-      // random speed within range
+      // random speed between min and max
       racer.speed = Math.floor(
         Math.random() * (gameSettings.maxSpeed - gameSettings.minSpeed + 1)
       ) + gameSettings.minSpeed;
@@ -106,14 +115,14 @@ startRaceBtn.addEventListener("click", () => {
       racer.element.style.left = racer.position + "px";
 
       // check finish
-      if (racer.position >= trackWidth && !finished.includes(racer.id)) {
-        finished.push(racer.id);
+      if (racer.position >= trackWidth && !finished.includes(racer.name)) {
+        finished.push(racer.name);
+
         const li = document.createElement("li");
-        li.textContent = `Racer ${racer.id}`;
+        li.textContent = `${finished.length}. ${racer.name}`;
         resultsList.appendChild(li);
 
-        // stop when all finish
-        if (finished.length === gameSettings.racers) {
+        if (finished.length === racers.length) {
           clearInterval(raceInterval);
         }
       }
