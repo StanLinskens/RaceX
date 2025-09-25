@@ -1,0 +1,18 @@
+:root {
+  /* Base */
+  --color-background: #0b0d17;   /* deep navy background */
+  --color-surface: #161a2d;      /* slightly lighter panels/cards */
+  --color-text: #f1f5f9;         /* main text (off-white for readability) */
+  --color-text-muted: #94a3b8;   /* secondary text (cool gray-blue) */
+
+  /* Accents (energy + contrast) */
+  --color-accent-1: #ff3d5a;     /* vibrant red (danger/speed) */
+  --color-accent-2: #00d8ff;     /* neon cyan (tech/sky) */
+  --color-accent-3: #ffc857;     /* golden yellow (highlights/warnings) */
+  
+  /* Extras (optional utility) */
+  --color-border: #2c3147;
+  --color-success: #4ade80;      /* green for wins */
+  --color-warning: #facc15;      /* amber alerts */
+  --color-error: #ef4444;        /* red errors */
+}

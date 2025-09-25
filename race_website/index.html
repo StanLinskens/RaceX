@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="inc/css/main.css">
+  <title>RaceX</title>
+</head>
+
+<body>
+  <header>
+    <h1 class="logo">RaceX</h1>
+    <nav>
+      <button data-tab="home">Home</button>
+      <button data-tab="race">Race</button>
+      <button data-tab="settings">Settings</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HOME TAB -->
+    <section id="home" class="tab active">
+      <h2>Welcome to RaceX</h2>
+      <p>
+        RaceX is a fun racing simulator where you choose your racers, set their speed rules, 
+        and watch them compete to the finish line.
+      </p>
+      <h3>How to Play</h3>
+      <ul>
+        <li>Go to <strong>Settings</strong> to configure race options (speed, number of racers, etc.).</li>
+        <li>Go to <strong>Race</strong>, pick your racers, and start the race.</li>
+        <li>View the <strong>Results</strong> to see who won!</li>
+      </ul>
+    </section>
+
+    <!-- RACE TAB -->
+    <section id="race" class="tab">
+      <h2>Race Arena</h2>
+      <div class="race-container">
+        <div class="racer-selection">
+          <h3>Select Racers</h3>
+          <div id="racer-options">
+            <!-- JS will generate racer choices here -->
+          </div>
+          <button id="start-race">Start Race</button>
+        </div>
+
+        <div class="race-track">
+          <h3>Race Track</h3>
+          <div id="track">
+            <!-- Racers will move here -->
+          </div>
+        </div>
+
+        <div class="results">
+          <h3>Results</h3>
+          <ol id="race-results">
+            <!-- Race results appear here -->
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- SETTINGS TAB -->
+    <section id="settings" class="tab">
+      <h2>Game Settings</h2>
+      <form id="settings-form">
+        <label>
+          Number of Racers:
+          <select name="racers" id="racers-count">
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+          </select>
+        </label>
+
+        <label>
+          Minimum Speed:
+          <input type="number" id="min-speed" value="1" min="1">
+        </label>
+
+        <label>
+          Maximum Speed:
+          <input type="number" id="max-speed" value="10" min="1">
+        </label>
+
+        <label>
+          Speed Change Frequency (ms):
+          <input type="number" id="speed-frequency" value="500" min="100">
+        </label>
+
+        <button type="submit">Save Settings</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>RaceX - A Simple Racing Game</p>
+  </footer>
+
+  <script src="inc/js/main.js"></script>
+</body>
+
+</html>
