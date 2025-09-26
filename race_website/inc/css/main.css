@@ -99,7 +99,7 @@ main {
 
 .race-track {
   width: 100%;               /* full width */
-  height: 300px;             /* fixed height */
+  height: 360px;             /* fixed height */
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 12px;
@@ -128,7 +128,6 @@ main {
   border-top: 1px solid var(--color-border);
 }
 
-
 .race-bottom-panel {
   display: flex;
   gap: 2rem;
@@ -138,7 +137,7 @@ main {
 #track {
   background: linear-gradient(to right, var(--color-border) 2px, transparent 2px);
   background-size: 40px 100%;
-  height: 300px;
+  height: 360px;
   position: relative;
 }
 
@@ -191,6 +190,72 @@ main {
   color: var(--color-text);
 }
 
+.racer-selection {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+#racer-select,
+#add-racer-btn {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+}
+
+#add-racer-btn {
+  cursor: pointer;
+  background: var(--color-accent-2);
+  color: #000;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+#add-racer-btn:hover {
+  background: var(--color-accent-1);
+  color: var(--color-text);
+}
+
+.selected-racers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.racer-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.racer-card img {
+  /* width: 40px;
+  height: 40px; */
+  border-radius: 0.5rem;
+}
+
+.racer-card .remove-racer {
+  background: transparent;
+  border: none;
+  color: var(--color-error);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.racer-card .remove-racer:hover {
+  color: var(--color-accent-1);
+}
+
+
 /* ========= FOOTER ========= */
 footer {
   background: var(--color-surface);
@@ -235,7 +300,7 @@ footer {
   }
 
   .race-track {
-    height: 250px; /* slightly smaller for smaller screens */
+    height: 360px; /* slightly smaller for smaller screens */
     padding: 0.5rem;
   }
 
@@ -258,7 +323,7 @@ footer {
   }
 
   .race-track {
-    height: 200px;
+    height: 360px;
   }
 
   .racer {

@@ -100,8 +100,20 @@
           <input type="number" id="speed-frequency" value="150" min="50" max="2000">
         </label>
 
+        <h3>Choose Racers</h3>
+        <div class="racer-selection">
+          <label for="racer-select">Select Racer:</label>
+          <select id="racer-select">
+            <option value="">-- Select a racer --</option>
+          </select>
+          <button type="button" id="add-racer-btn">Add Racer</button>
+        </div>
+
+        <div id="selected-racers" class="selected-racers"></div>
+
         <button type="submit">Save Settings</button>
       </form>
+
     </section>
   </main>
 
